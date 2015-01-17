@@ -16,7 +16,7 @@ function onForegroundWindowChange(app, title)
 end
 
 function activeAppName()
-	return appTitlekkk
+	return appTitle
 end
 
 function onPoseEdge(pose, edge)
@@ -24,12 +24,12 @@ function onPoseEdge(pose, edge)
 	
 	pose = conditionallySwapWave(pose)
 	
-    if (pose ~= "rest" and pose ~= "unknown") then
-        -- hold if edge is on, timed if edge is off
-        myo.unlock(edge == "off" and "timed" or "hold")
-    end
+    -- if (pose ~= "rest" and pose ~= "unknown") then
+    --     -- hold if edge is on, timed if edge is off
+    --     myo.unlock(edge == "off" and "timed" or "hold")
+    -- end
     
-    local keyEdge = edge == "off" and "up" or "down"
+    -- local keyEdge = edge == "off" and "up" or "down"
     
 	if (pose == "waveOut") then
 		onWaveOut(keyEdge)		
