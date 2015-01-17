@@ -1,5 +1,5 @@
 # PatatapController
-Myo controller for Patatap. Created at MHacks V by @jhil[https://github.com/jhil] and @amelenci[https://github.com/amelenci].
+Myo controller for Patatap. Created at MHacks V by [@jhil](https://github.com/jhil) and [@amelenci](https://github.com/amelenci).
 
 ## Setup
 
@@ -9,10 +9,10 @@ Myo controller for Patatap. Created at MHacks V by @jhil[https://github.com/jhil
 
 ## Key
 
-Fist =            Bass
-Wave Right =      Glitch
-Wave Left =       Snare
-Spread Fingers =  Bell
+Fist =            Bass   
+Wave Right =      Glitch   
+Wave Left =       Snare   
+Spread Fingers =  Bell   
     
 
 ## Acknowledgements
