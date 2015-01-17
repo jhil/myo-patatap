@@ -3,24 +3,24 @@ scriptTitle = "Patatap Controller"
 scriptDetailsUrl = ""
 
 function onForegroundWindowChange(app, title)
-    myo.debug("onForegroundWindowChange: " .. app .. ", " .. title)
+    -- myo.debug("onForegroundWindowChange: " .. app .. ", " .. title)
     appTitle = title
     if appTitle == "Patatap" then
     	myo.setLockingPolicy("none")
-    	myo.debug("UNLOCKED")
+    	-- myo.debug("UNLOCKED")
     else
     	myo.setLockingPolicy("standard")
-    	myo.debug("LOCKED")
+    	-- myo.debug("LOCKED")
     end
     return true
 end
 
 function activeAppName()
-	return appTitle
+	return appTitlekkk
 end
 
 function onPoseEdge(pose, edge)
-	myo.debug("onPoseEdge: " .. pose .. ": " .. edge)
+	-- myo.debug("onPoseEdge: " .. pose .. ": " .. edge)
 	
 	pose = conditionallySwapWave(pose)
 	
@@ -43,15 +43,17 @@ function onPoseEdge(pose, edge)
 end
  
 function onWaveOut(keyEdge)
-    myo.debug("Snare")
-    myo.vibrate("short")
-    myo.keyboard("a", keyEdge)
+	myo.debug("Glitch")
+	myo.vibrate("short")
+	myo.keyboard("u",keyEdge)
+	myo.keyboard("x",keyEdge)
 end
  
 function onWaveIn(keyEdge)
-    myo.debug("Glitch")
+	myo.debug("Snare")
     myo.vibrate("short")
-    myo.keyboard("f",keyEdge)
+    myo.keyboard("a", keyEdge)
+    myo.keyboard("o", keyEdge)
 end
 
  
@@ -59,12 +61,14 @@ function onFist(keyEdge)
     myo.debug("Bass")    
     myo.vibrate("short")
     myo.keyboard("c",keyEdge)
+    myo.keyboard("j",keyEdge)
 end
  
 function onFingersSpread(keyEdge)
     myo.debug("Bell")
     myo.vibrate("short")
     myo.keyboard("k", keyEdge)
+    myo.keyboard("m", keyEdge)
 end
 
 function conditionallySwapWave(pose)
