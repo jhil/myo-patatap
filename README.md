@@ -1,5 +1,5 @@
 # PatatapController
-Myo controller for Patatap. Created at MHacks V by @jhil and @arimelenci.
+Myo controller for Patatap. Created at MHacks V by @jhil[https://github.com/jhil] and @amelenci[https://github.com/amelenci].
 
 ## Setup
 
