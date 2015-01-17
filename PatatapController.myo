@@ -5,6 +5,13 @@ scriptDetailsUrl = ""
 function onForegroundWindowChange(app, title)
     myo.debug("onForegroundWindowChange: " .. app .. ", " .. title)
     appTitle = title
+    if appTitle == "Patatap" then
+    	myo.setLockingPolicy("none")
+    	myo.debug("UNLOCKED")
+    else
+    	myo.setLockingPolicy("standard")
+    	myo.debug("LOCKED")
+    end
     return true
 end
 
@@ -17,11 +24,10 @@ function onPoseEdge(pose, edge)
 	
 	pose = conditionallySwapWave(pose)
 	
-	myo.setLockingPolicy("none")
-    -- if (pose ~= "rest" and pose ~= "unknown") then
-    --     -- hold if edge is on, timed if edge is off
-    --     myo.unlock(edge == "off" and "timed" or "hold")
-    -- end
+    if (pose ~= "rest" and pose ~= "unknown") then
+        -- hold if edge is on, timed if edge is off
+        myo.unlock(edge == "off" and "timed" or "hold")
+    end
     
     local keyEdge = edge == "off" and "up" or "down"
     
