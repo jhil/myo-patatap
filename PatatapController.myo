@@ -24,11 +24,11 @@ function conditionallySwapWave(pose)
 end
 
 function onPoseEdge(pose, edge)
-
-    if (pose ~= "rest" and pose ~= "unknown") then
-        -- hold if edge is on, timed if edge is off
-        myo.unlock(edge == "off" and "timed" or "hold")
-    end
+	myo.setLockingPolicy("none")
+    -- if (pose ~= "rest" and pose ~= "unknown") then
+    --     -- hold if edge is on, timed if edge is off
+    --     myo.unlock(edge == "off" and "timed" or "hold")
+    -- end
 
     myo.debug("onPoseEdge: " .. pose .. ": " .. edge)
     
@@ -69,5 +69,5 @@ end
 function onFingersSpread(keyEdge)
     myo.debug("Bell")
     myo.vibrate("short")
-    myo.keyboard("k", keyEdge)
+    myo.keyboard("k", keyEdge)a
 end
