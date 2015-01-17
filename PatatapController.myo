@@ -1,0 +1,73 @@
+scriptId = 'com.bgoti.patatap'
+scriptTitle = "Patatap Controller"
+scriptDetailsUrl = ""
+
+function onForegroundWindowChange(app, title)
+    myo.debug("onForegroundWindowChange: " .. app .. ", " .. title)
+    appTitle = title
+    return true
+end
+
+function activeAppName()
+	return appTitle
+end
+
+function conditionallySwapWave(pose)
+	if myo.getArm() == "left" then
+        if pose == "waveIn" then
+            pose = "waveOut"
+        elseif pose == "waveOut" then
+            pose = "waveIn"
+        end
+    end
+    return pose
+end
+
+function onPoseEdge(pose, edge)
+
+    if (pose ~= "rest" and pose ~= "unknown") then
+        -- hold if edge is on, timed if edge is off
+        myo.unlock(edge == "off" and "timed" or "hold")
+    end
+
+    myo.debug("onPoseEdge: " .. pose .. ": " .. edge)
+    
+    pose = conditionallySwapWave(pose)
+    
+    local keyEdge = edge == "off" and "up" or "down"
+    
+    if (pose == "waveOut") then
+        onWaveOut(keyEdge)        
+    elseif (pose == "waveIn") then
+        onWaveIn(keyEdge)
+    elseif (pose == "fist") then
+        onFist(keyEdge)
+    elseif (pose == "fingersSpread") then
+        onFingersSpread(keyEdge)            
+    end
+end
+ 
+function onWaveOut(keyEdge)
+    myo.debug("Snare")
+    myo.vibrate("short")
+    myo.keyboard("a", keyEdge)
+end
+ 
+function onWaveIn(keyEdge)
+    myo.debug("Glitch")
+    myo.vibrate("short")
+    myo.keyboard("f",keyEdge)
+end
+
+ 
+function onFist(keyEdge)
+    myo.debug("Bass")    
+    myo.vibrate("short")
+    myo.keyboard("c",keyEdge)
+end
+ 
+function onFingersSpread(keyEdge)
+    myo.debug("Bell")
+    myo.vibrate("short")
+    myo.keyboard("k", keyEdge)
+end
